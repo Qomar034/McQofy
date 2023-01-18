@@ -2,28 +2,31 @@
     "Users": [
         {
             "id": 1,
+            "fullName": "admin",
             "username": "admin",
             "email": "admin@yopmail.com",
-            "password": "admin",
+            "password": "admin123",
             "role": "Admin",
             "phoneNumber": "00012345678",
             "address": "Mojosari"
         },
         {
             "id": 2,
-            "username": "Marqo",
+            "fullName": "Marqo",
+            "username": "marqo",
             "email": "marqofy@yopmail.com",
             "password": "12345678",
-            "role": "Admin",
+            "role": "Staff",
             "phoneNumber": "00012345678",
             "address": "Mojosari"
         },
         {
             "id": 3,
-            "username": "customer",
-            "email": "customerone@yopmail.com",
+            "fullName": "Qomar",
+            "username": "qomar",
+            "email": "qomar@yopmail.com",
             "password": "12345678",
-            "role": "Customer",
+            "role": "Staff",
             "phoneNumber": "00012345678",
             "address": "Mojosari"
         }
@@ -192,7 +195,7 @@
             "name": "Snack"
         }
     ],
-    "Items": [
+    "Food": [
         {
             "id": 1,
             "name": "Egg and Cheese Muffin",
@@ -430,6 +433,30 @@
             "id": 31,
             "itemId": 9,
             "name": "Rice"
+        }
+    ],
+    "Members" : [
+        {
+            "id":1,
+            "firstName": "Nur",
+            "lastName": "Qomarudin",
+            "username": "Marqo034",
+            "email": "nurqomarudin@yopmail.com",
+            "phoneNumber": "088888888888",
+            "password": "12345678",
+            "gender": "Male",
+            "point": 20000
+        },
+        {
+            "id":2,
+            "firstName": "Tom",
+            "lastName": "Tomo",
+            "username": "TomJerry",
+            "email": "tom@yopmail.com",
+            "phoneNumber": "088888888888",
+            "password": "12345678",
+            "gender": "Male",
+            "point": 1000
         }
     ]
 }

@@ -1,25 +1,20 @@
-'use strict';
+"use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+  async up(queryInterface, Sequelize) {
+    let dataPromo = require("../data.json").Promos.map((el) => {
+      
+      el.UserId = 1
+      el.createdAt = el.updatedAt = new Date();
+
+      delete el.id;
+      return el;
+    });
+    await queryInterface.bulkInsert("Promos", dataPromo);
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete("Promos", null, {});
+  },
 };
