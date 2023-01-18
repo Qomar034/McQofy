@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+const item = require('../../../../../../../Hack/Phase3/Week1/Day1/p3-challenge-1/server/models/item');
+const slugger = require('../helpers/slugger');
 module.exports = (sequelize, DataTypes) => {
   class Food extends Model {
     /**
@@ -53,5 +55,15 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Food',
   });
+
+  Food.beforeCreate((instance, option) => {
+    instance.slug = slugger(instance.name)
+    return instance.slug
+  })
+
+  Food.afterUpdate((instance, option) => {
+    instance.slug = slugger(instance.name)
+    return instance.slug
+  })
   return Food;
 };
