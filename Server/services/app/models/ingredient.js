@@ -11,10 +11,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Ingredient.belongsTo(models.Food, {foreignKey: "FoodId"})
     }
   }
   Ingredient.init({
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: "Ingredient name cannot be empty!"},
+        notNull : {msg: "Ingredient name must be filled!"},
+      },
+    },
     FoodId: DataTypes.INTEGER
   }, {
     sequelize,
