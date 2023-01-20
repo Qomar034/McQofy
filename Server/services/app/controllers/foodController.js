@@ -48,18 +48,32 @@ class FoodController {
     static async putFood(req, res, next){
         try {
             let { id } = req.params
-            let grabbedFood = await Food.findByPk(id)
-            const oldFood = grabbedFood
+            let updatedFood = await Food.findByPk(id)
 
             let { name, description, imgUrl, price, CategoryId, UserId } = req.body
             // let UserId = req.user.id
             if (!UserId) UserId = 1
 
-            await grabbedFood.update({ name, description, imgUrl, price, CategoryId, UserId })
-            res.status(200).json({msg: `${oldFood.name} data succesfully updated`})
+            await updatedFood.update({ name, description, imgUrl, price, CategoryId, UserId })
+            res.status(200).json({msg: `data of food with id ${updatedFood.id} succesfully updated`})
         } catch (error) {
             console.log(error);
             res.status(500).json({msg: "error in put food"})
+        }
+    }
+
+    static async patchFood(req, res, next){
+        try {
+            let { id } = req.params
+            let patchedFood = await Food.findByPk(id)
+            const oldStatus = patchedFood.status
+
+            let { status } = req.body
+            await patchedFood.update({ status })
+            res.status(200).json({msg: `${patchedFood.name} status changed from ${oldStatus} to ${status}.`})
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({msg: "error in patch food"})
         }
     }
 
