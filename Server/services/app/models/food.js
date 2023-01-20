@@ -41,11 +41,23 @@ module.exports = (sequelize, DataTypes) => {
     },
     price: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: "Food Price cannot be empty!"},
+        notNull : {msg: "Food Price must be filled!"},
+        min : {msg: "Food Price must be over Rp. 1.000,-", args: 1000}
+      },
+    },
+    status: {
+      type: DataTypes.INTEGER
     },
     CategoryId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: "Food Category cannot be empty!"},
+        notNull : {msg: "Food Category must be filled!"},
+      },
     },
     UserId: {
       type: DataTypes.INTEGER,

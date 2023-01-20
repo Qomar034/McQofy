@@ -42,7 +42,14 @@ module.exports = (sequelize, DataTypes) => {
       },
       unique: {msg: "Member with this email already exist."}
     },
-    phoneNumber: DataTypes.STRING,
+    phoneNumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: "Member phone number cannot be empty!"},
+        notNull : {msg: "Member phone number must be filled!"},
+      },
+    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,

@@ -25,6 +25,11 @@ module.exports = {
       price: {
         type: Sequelize.INTEGER
       },
+      status: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: 'Active'
+      },
       CategoryId: {
         type: Sequelize.INTEGER,
         references: {

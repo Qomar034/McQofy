@@ -15,11 +15,39 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Promos.init({
-    name: DataTypes.STRING,
-    image: DataTypes.STRING,
-    caption: DataTypes.TEXT,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: "Promo name cannot be empty!"},
+        notNull : {msg: "Promo name must be filled!"},
+      },
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: "Promo Image cannot be empty!"},
+        notNull : {msg: "Promo Image must be filled!"},
+      },
+    },
+    caption: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: "Promo Caption cannot be empty!"},
+        notNull : {msg: "Promo Caption must be filled!"},
+      },
+    },
     description: DataTypes.TEXT,
-    expired: DataTypes.STRING,
+    expired: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {msg: "Promo Expired Date cannot be empty!"},
+        notNull : {msg: "Promo Expired Date must be filled!"},
+      },
+    },
     UserId: DataTypes.INTEGER
   }, {
     sequelize,
